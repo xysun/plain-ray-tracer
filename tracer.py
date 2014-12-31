@@ -35,17 +35,18 @@ class Tracer(object):
             for i in range(0, nx):
                 # compute ray
                 ray = self.camera.compute_ray(i, j, nx, ny)
-                # check intersection
-                # TODO: take closest hit
+                # check intersection and take closest hit
+                hit_point = float('inf')
+                pixel = BLACK
                 for shape in self.shapes:
-                    hit = shape.intersect(ray)
-                    if hit > 0: # inner
-                        pixels.append(shape.in_color)
-                    elif hit == 0: # edge
-                        # print "edge!"
-                        pixels.append(shape.edge_color)
-                    else: # black
-                        pixels.append(BLACK)
+                    hit, this_hit_point = shape.intersect(ray)
+                    if hit > 0 and this_hit_point <= hit_point: #inner
+                        hit_point = this_hit_point
+                        pixel = shape.in_color
+                    elif hit == 0 and this_hit_point <= hit_point: #edge
+                        hit_point = this_hit_point
+                        pixel = shape.edge_color
+                pixels.append(pixel)
         
         image.putdata(pixels)
         image.save(outputname)

@@ -23,7 +23,7 @@ class Shape(object):
     def intersect(self, ray):
         '''
         check if will intersect by ray
-        return hit
+        return hit, closer intersection point
         hit: 1 -> inside, 0 -> on edge, -1 -> not hit
         '''
         pass
@@ -50,12 +50,12 @@ class Sphere(Shape):
         q = Quadratic(A, B, C)
 
         if abs(q.discriminant) <= THRESHOLD:
-            return 0
+            return 0, q.solve()
         else:
             if q.discriminant > 0:
-                return 1
+                return 1, q.solve()
             elif q.discriminant < 0:
-                return -1
+                return -1, None
 
 class Triangle(Shape):
     pass

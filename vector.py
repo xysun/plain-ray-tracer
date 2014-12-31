@@ -14,6 +14,16 @@ class Quadratic(object):
         self.B = B
         self.C = C
         self.discriminant = B * B - 4 * A * C
+    
+    def solve(self):
+        if abs(self.discriminant) <= THRESHOLD:
+            # 1 solution
+            return -self.B / (2*self.A)
+        else:
+            if self.discriminant < 0:
+                return None
+            else: # 2 solutions, return smaller
+                return -self.B - math.sqrt(self.discriminant) / (2 * self.A)
 
 class Vector3(object):
     '''

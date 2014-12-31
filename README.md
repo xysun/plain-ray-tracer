@@ -21,4 +21,4 @@ References
     * Fundamentals of Computer Graphics, Chapter 4
     * PIL Image class: https://pillow.readthedocs.org/reference/Image.html
     * How to draw pixels in PIL: http://stackoverflow.com/questions/434583/what-is-the-fastest-way-to-draw-an-image-from-discrete-pixel-values-in-python
-    * Nice color picker: http://www.rapidtables.com/web/color/RGB_Color.html
+    * Nice color picker: http://www.rapidtables.com/web/color/RGB_Color.htm
