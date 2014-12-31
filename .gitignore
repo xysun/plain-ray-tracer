@@ -4,4 +4,3 @@ include/
 .Python
 *.pyc
 *.swp
-*.png
