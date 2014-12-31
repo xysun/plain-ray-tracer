@@ -2,4 +2,6 @@ bin/
 lib/
 include/
 .Python
-.pyc
+*.pyc
+*.swp
+*.png
