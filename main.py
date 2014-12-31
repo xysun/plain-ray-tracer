@@ -25,15 +25,15 @@ def sample1():
     parallel, 2 spheres
     '''
     # build camera
-    e = Vector3(0, 0, 2)
-    w = Vector3(-1, 0, 0)
-    up = Vector3(0, 1, 0)
+    e = Vector3(0, 0, 2) # e is the view point of camera, i.e. "origin"
+    w = Vector3(-1, 0, 0) # w is the opposite of viewing direction
+    up = Vector3(0, 1, 0) # "up" vector
     camera = ParallelCamera(e, w, up)
-    camera.set_size(l = -1.5, r = 1.5, b = -1.5, t = 1.5)
+    camera.set_size(l = -1.5, r = 1.5, b = -1.5, t = 1.5) # left, right, bottom, top spans w.r.t to e
 
     # setup tracer
     tracer = Tracer(camera, [sphere1, sphere2])
-    tracer.render('sample1.png', (512, 512))
+    tracer.render('sample1.png', (512, 512)) # 2nd argument is the pixel size of the output graph
 
 if __name__ == '__main__':
     sample1()
