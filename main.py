@@ -10,7 +10,7 @@ from vector import Vector3
 
 # sphere with white edge and green inside
 origin = Vector3(2, 0, 2)
-radius = 1.5
+radius = 1.
 sphere1 = Sphere(origin, radius)
 sphere1.set_color(edge_color = (255, 255, 255), in_color = (128, 255, 0))
 
@@ -22,7 +22,7 @@ sphere2.set_color(edge_color = (0, 128, 255), in_color = (204, 204, 0))
 
 def sample1():
     '''
-    parallel, sphere
+    parallel, 2 spheres
     '''
     # build camera
     e = Vector3(0, 0, 2)
@@ -33,7 +33,7 @@ def sample1():
 
     # setup tracer
     tracer = Tracer(camera, [sphere1, sphere2])
-    tracer.render('sample2.png', (512, 512))
+    tracer.render('sample1.png', (512, 512))
 
 if __name__ == '__main__':
     sample1()
