@@ -1,23 +1,25 @@
-Plain ray tracing without any shading
+A plain ray tracing program using pixel drawing only, i.e. no graphics APIs like openGL involved.
 
-Customizable colors (both edge and within) for objects
+No shading is implemented as of now.
 
-Supporting: 
-    * parallel & perpective projection
-    * orthographic & oblique
-    * shapes: sphere, triangle, polygon
+Customizable colors (both edge and within) for objects.
 
-User input:
+Supporting (crossed are completed): 
+    * ~~parallel~~ & perpective projection
+    * ~~orthographic~~ & oblique
+    * shapes: ~~sphere~~, triangle, polygon
+
+User input: (see `main.py`)
     * shapes with specifications
-    * image plane: v & up vector
-    * output size
-    * parallel or perspective
+    * image plane: v & up vector, width and height span
+    * output file and pixel size
+    * parallel or perspective camera
     * projection direction (orthogonal in default)
 
 Requirements:
     * pillow: `pip install pillow`
 
-References
+References & credits: 
     * Fundamentals of Computer Graphics, Chapter 4
     * PIL Image class: https://pillow.readthedocs.org/reference/Image.html
     * How to draw pixels in PIL: http://stackoverflow.com/questions/434583/what-is-the-fastest-way-to-draw-an-image-from-discrete-pixel-values-in-python
