@@ -50,15 +50,32 @@ class Sphere(Shape):
         q = Quadratic(A, B, C)
 
         if abs(q.discriminant) <= THRESHOLD:
-            return 0, q.solve()
+            x = q.solve()
+            if x > 0:
+                return 0, x
+            else:
+                return -1, None
         else:
             if q.discriminant > 0:
-                return 1, q.solve()
+                x = q.solve()
+                if x > 0:
+                    return 1, x
+                else:
+                    return -1, None
             elif q.discriminant < 0:
                 return -1, None
 
 class Triangle(Shape):
-    pass
+    def __init__(self, a, b, c):
+        '''
+        a, b, c are 3 vertices of Vector3
+        '''
+        self.a = a
+        self.b = b
+        self.c = c
+    
+    def intersect(self, ray):
+        pass
 
 class Polygon(Shape):
     def __init__(self, vertices):
