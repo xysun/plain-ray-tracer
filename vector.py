@@ -1,9 +1,62 @@
 '''
-linear algebra utilities
+math & linear algebra utilities
 '''
 import math
 
 THRESHOLD = 0.1
+
+class Matrix3(object):
+    '''
+    3x3 matrix
+    '''
+    def __init__(self, columns):
+        '''
+        columns: [[1st_column], [2nd_column], [3rd_column]]
+        eg: for matrix
+                      [1,2,3
+                       4,5,6
+                       7,8,9]
+            columns = [[1,4,7], [2,5,8], [3,6,9]]
+        '''
+        self.columns = columns
+
+    def determinant(self):
+        '''calculate determinant'''
+        a,d,g = self.columns[0]
+        b,e,h = self.columns[1]
+        c,f,i = self.columns[2]
+        
+        return a * (e*i - f*h) - b * (d*i - f*g) + c * (d*h - e*g)
+
+class LinearSystem3(object):
+    '''
+    a dimension3 linear system of Ax = B, i.e. Matrix3 x Vector3 = Vector3
+    '''
+    def __init__(self, A, B):
+        '''
+        A: Matrix3
+        B: Vector3
+        '''
+        self.A = A
+        self.B = [B.x, B.y, B.z]
+    
+    def solve(self):
+        '''
+        solve for x of Vector3 using cramer's rule
+        ''' 
+        # TODO: what if dx = 0? 
+        D = self.A
+        Dx = Matrix3([self.B, self.A.columns[1], self.A.columns[2]])
+        Dy = Matrix3([self.A.columns[0], self.B, self.A.columns[2]])
+        Dz = Matrix3([self.A.columns[0], self.A.columns[1], self.B])
+        
+        d = D.determinant()
+        dx = Dx.determinant()
+        dy = Dy.determinant()
+        dz = Dz.determinant()
+
+        return Vector3(dx / float(d), dy / float(d), dz / float(d))
+
 
 class Quadratic(object):
     '''
@@ -45,6 +98,16 @@ class Vector3(object):
 
         return Vector3(x,y,z)
     
+    def __sub__(self, other):
+        x = self.x - other.x
+        y = self.y - other.y
+        z = self.z - other.z
+
+        return Vector3(x,y,z)
+    
+    def tolist(self):
+        return [self.x, self.y, self.z]
+    
     def scale(self, scalar):
         x = scalar * self.x
         y = scalar * self.y
@@ -52,6 +115,22 @@ class Vector3(object):
 
         return Vector3(x,y,z)
     
+    def dot_product(self, other):
+        x = self.x * other.x
+        y = self.y * other.y
+        z = self.z * other.z
+
+        return x + y + z
+    
+    def is_parallel(self, other):
+        '''
+        two vectors are parallel if a * b = |a| * |b|
+        '''
+        dot_product = self.dot_product(other)
+        len_product = self.length * other.length
+
+        return abs(dot_product) == len_product
+
     def cross_product(self, other):
         '''
         dot product of self x other

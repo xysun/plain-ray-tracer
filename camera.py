@@ -55,7 +55,6 @@ class ParallelCamera(Camera):
         start at topleft, following Pillow's convention
         '''
         u = self.l + (self.r - self.l) / float(nx) * (i + 0.5)
-        #v = self.b + (self.t - self.b) / ny * (j + 0.5)
         v = self.t - (self.t - self.b) / float(ny) * (j + 0.5)
         direction = self.w.scale(-1)
         origin = self.e + self.u.scale(u) + self.v.scale(v)

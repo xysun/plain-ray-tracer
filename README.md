@@ -7,7 +7,7 @@ Customizable colors (both edge and within) for objects.
 ###Supporting features(crossed are completed): 
 * ~~parallel~~ & perpective projection
 * ~~orthographic~~ & oblique
-* shapes: ~~sphere~~, triangle, polygon
+* shapes: ~~sphere~~, ~~triangle~~, polygon
 
 ###User input: (see `main.py`)
 * shapes with specifications
@@ -30,3 +30,7 @@ Customizable colors (both edge and within) for objects.
 * simple parallel & orthogonal projection on two overlapping spheres (see `sample1()` in `main.py`)
 
 ![normal](sample1.png?raw=true)
+
+* parallel & orthogonal projection on overlapping sphere and triangle (see `sample2()` in `main.py`)
+
+![normal][sample2.png?raw=true)

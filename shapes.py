@@ -4,7 +4,8 @@ different shape classes
 * triangle
 * polygon
 '''
-from vector import Quadratic, THRESHOLD
+from vector import Quadratic, LinearSystem3, Vector3, Matrix3
+from vector import THRESHOLD
 
 class Shape(object):
     '''
@@ -75,7 +76,33 @@ class Triangle(Shape):
         self.c = c
     
     def intersect(self, ray):
-        pass
+        '''
+        solve a linear system
+        '''
+        B = self.a - ray.origin
+        A = Matrix3([(self.a - self.b).tolist(),
+                     (self.a - self.c).tolist(),
+                     ray.direction.tolist()])
+        system = LinearSystem3(A, B)
+        solution = system.solve()
+        beta = solution.x
+        gamma = solution.y
+        t = solution.z
+        alpha = 1 - beta - gamma
+
+        if t < 0:
+            return -1, None
+        else:
+            # edge: if ray is parallel to either a,b,c
+            # TODO: how to detect edge with threshold band
+            r = ray.origin + ray.direction.scale(t)
+            if r.is_parallel(self.a) or r.is_parallel(self.b) or r.is_parallel(self.c):
+                return 0, t
+            # inner, everyone > 0
+            if alpha > 0 and beta > 0 and gamma > 0:
+                return 1, t
+        # catch-all case
+        return -1, None
 
 class Polygon(Shape):
     def __init__(self, vertices):
