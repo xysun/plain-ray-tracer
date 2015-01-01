@@ -55,6 +55,9 @@ class LinearSystem3(object):
         dy = Dy.determinant()
         dz = Dz.determinant()
 
+        if d == 0:
+            return None
+
         return Vector3(dx / float(d), dy / float(d), dz / float(d))
 
 
@@ -76,7 +79,10 @@ class Quadratic(object):
             if self.discriminant < 0:
                 return None
             else: # 2 solutions, return smaller
-                return -self.B - math.sqrt(self.discriminant) / (2 * self.A)
+                x1 = (-self.B - math.sqrt(self.discriminant)) / (2 * self.A)
+                x2 = (-self.B + math.sqrt(self.discriminant)) / (2 * self.A)
+                return min(x1, x2)
+
 
 class Vector3(object):
     '''

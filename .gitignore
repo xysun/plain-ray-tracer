@@ -4,3 +4,4 @@ include/
 .Python
 *.pyc
 *.swp
+testsample.png

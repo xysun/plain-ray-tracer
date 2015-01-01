@@ -3,7 +3,7 @@ unit tests
 '''
 import unittest
 
-from vector import Vector3, Matrix3, LinearSystem3
+from vector import Vector3, Matrix3, LinearSystem3, Quadratic
 
 class TestCamera(unittest.TestCase):
     
@@ -36,7 +36,11 @@ class TestMath(unittest.TestCase):
         v2 = Vector3(4,5,6)
         v = v1 - v2
         self.assertEqual(v.x, -3)
-
+    
+    def test_solve_quadratic(self):
+        q = Quadratic(1, -4, 3)
+        self.assertEqual(q.solve(), 1)
+        
 
 if __name__ == '__main__':
     unittest.main(verbosity = 2)

@@ -36,6 +36,13 @@ w = Vector3(-1, 0, 0) # w is the opposite of viewing direction
 up = Vector3(0, 1, 0) # "up" vector
 camera1 = ParallelCamera(e, w, up)
 
+# camera2
+e = Vector3(0, 0, 2) 
+w = Vector3(-1, 0, 0) 
+up = Vector3(0, 1, 0) 
+camera2 = ParallelCamera(e, w, up)
+
+
 def sample1():
     '''
     parallel, 2 spheres
@@ -54,9 +61,18 @@ def sample2():
     camera = camera1
     camera.set_size(l = -1.5, r = 1.5, b = -1.5, t = 1.5)
 
-    tracer = Tracer(camera, [sphere1, triangle1])
+    tracer = Tracer(camera, [sphere1, triangle2])
     tracer.render('sample2.png', (512, 512))
+
+def test():
+    camera = camera2
+    camera.set_size(l = -1.5, r = 1.5, b = -1.5, t = 1.5)
+
+    tracer = Tracer(camera, [sphere1, triangle2])
+    tracer.render('testsample.png', (512, 512))
+
 
 if __name__ == '__main__':
     #sample1()
     sample2()
+    #test()

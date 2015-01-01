@@ -19,6 +19,10 @@ Customizable colors (both edge and within) for objects.
 ###Requirements:
 * pillow: `pip install pillow`
 
+###Todo:
+* edge detection on triangles & polygons
+* ~~bug with triangle projection T.T~~
+
 ###References & credits: 
 * Fundamentals of Computer Graphics, Chapter 4
 * [PIL Image class](https://pillow.readthedocs.org/reference/Image.html)

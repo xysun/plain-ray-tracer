@@ -85,6 +85,8 @@ class Triangle(Shape):
                      ray.direction.tolist()])
         system = LinearSystem3(A, B)
         solution = system.solve()
+        if solution is None:
+            return -1, None
         beta = solution.x
         gamma = solution.y
         t = solution.z

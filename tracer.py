@@ -38,13 +38,14 @@ class Tracer(object):
                 hit_point = float('inf')
                 pixel = BLACK
                 for shape in self.shapes:
-                    hit, this_hit_point = shape.intersect(ray)
-                    if hit > 0 and this_hit_point < hit_point: #inner
-                        hit_point = this_hit_point
+                    hit, t = shape.intersect(ray)
+                    if hit == 1 and t < hit_point: #inner
+                        hit_point = t
                         pixel = shape.in_color
-                    elif hit == 0 and this_hit_point < hit_point: #edge
-                        hit_point = this_hit_point
+                    elif hit == 0 and t < hit_point: #edge
+                        hit_point = t
                         pixel = shape.edge_color
+                
                 pixels.append(pixel)
         
         image.putdata(pixels)
