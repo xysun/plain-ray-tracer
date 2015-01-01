@@ -33,4 +33,4 @@ Customizable colors (both edge and within) for objects.
 
 * parallel & orthogonal projection on overlapping sphere and triangle (see `sample2()` in `main.py`)
 
-![normal][sample2.png?raw=true)
+![normal](sample2.png?raw=true)
