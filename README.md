@@ -2,19 +2,20 @@ A plain ray tracing program using pixel drawing only, i.e. no graphics APIs like
 
 No shading is implemented as of now.
 
-Customizable colors (both edge and within) for objects.
+###How to use
+
+* run tests: `python test.py`
+* refer to `main.py` to see how to config camera, create scenes, and render the scene (`python main.py`).  
 
 ###Supporting features(crossed are completed): 
 * ~~parallel~~ & perpective projection
 * ~~orthographic~~ & oblique
 * shapes: ~~sphere~~, ~~triangle~~, polygon
 
-###User input: (see `main.py`)
-* shapes with specifications
-* image plane: v & up vector, width and height span
-* output file and pixel size
-* parallel or perspective camera
-* projection direction (orthogonal in default)
+###Config camera and setup scene: (see `main.py`)
+* shapes in scene: origin, size, color -- both edge and inner color)
+* camera: v & up vector, width and height span; parallel or perspective; projection direction (orthogonal in default)
+* output file: path and pixel size
 
 ###Requirements:
 * pillow: `pip install pillow`
